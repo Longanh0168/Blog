@@ -19,11 +19,13 @@ const Write = () => {
       const formData = new FormData();
       formData.append("file", file);
       const res = await axios.post("/upload", formData);
+      console.log(formData)
       return res.data;
     } catch (err) {
       console.log(err);
     }
   };
+
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -43,8 +45,8 @@ const Write = () => {
             cat,
             img: file ? imgUrl : "",
             date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
-          navigate("/")
+          });                
+      navigate("/")
     } catch (err) {
       console.log(err);
     }
@@ -83,6 +85,7 @@ const Write = () => {
             name=""
             onChange={(e) => setFile(e.target.files[0])}
           />
+
           <label className="file" htmlFor="file">
             Upload Image
           </label>
